@@ -1,10 +1,10 @@
 {
   "name": "api-rest-typescript",
   "version": "1.0.0",
-  "description": "* Install packages globally ```console npm i typescript -g npm i ts-node -g npm i nodemon -g ```",
+  "description": "API Rest TypeScript",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./src/app.ts"
   },
   "keywords": [],
   "author": "",
