@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { errorHandler } from '../utils/error.handler';
+import { getCars, insertCar } from '../services/item'
 
 const getItem = (req: Request, res: Response) => {
   try {
@@ -9,9 +10,10 @@ const getItem = (req: Request, res: Response) => {
   }
 }
 
-const getItems = (req: Request, res: Response) => {
+const getItems = async (req: Request, res: Response) => {
   try {
-    res.status(200).send({ data: 'data' });
+    const items = await getCars();
+    res.status(200).send({ items });
   } catch (error) {
     errorHandler(res, 'ERROR_GET_ITEMS');
   }
@@ -25,11 +27,12 @@ const updateItem = (req: Request, res: Response) => {
   }
 }
 
-const postItem = (req: Request, res: Response) => {
+const postItem = async ({ body }: Request, res: Response) => {
   try {
-    res.status(200).send({ data: 'data' });
+    const postedItem = await insertCar(body);
+    res.status(200).send({ postedItem });
   } catch (error) {
-    errorHandler(res, 'ERROR_POST_ITEM');
+    errorHandler(res, 'ERROR_POST_ITEM', error);
   }
 }
 

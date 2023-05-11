@@ -5,7 +5,7 @@ const itemRouter = Router()
 
 itemRouter.get('/items', getItems);
 itemRouter.get('/item/:id', getItem);
-itemRouter.post('/', postItem);
+itemRouter.post('/item', postItem);
 itemRouter.put('/:id', updateItem);
 itemRouter.delete('/:id', deleteItem);
 
