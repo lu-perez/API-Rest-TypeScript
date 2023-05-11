@@ -2,13 +2,19 @@ import { Car } from '../interface/car.interface';
 import itemModel from '../models/item';
 
 const insertCar = async (item: Car) => {
-  const responseInsert = await itemModel.create(item);
-  return responseInsert;
+  return await itemModel.create(item);
 }
 
 const getCars = async () => {
-  const responseItems = await itemModel.find({});
-  return responseItems;
+  return await itemModel.find({});
 }
 
-export { insertCar, getCars }
+const getCar = async (id: string) => {
+  return await itemModel.findOne({ _id: id });
+}
+
+export { 
+  insertCar,
+  getCars,
+  getCar
+}
